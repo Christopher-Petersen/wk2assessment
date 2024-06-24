@@ -8,7 +8,15 @@
 // update and say "Log out". If a user clicks on the button again, its text
 // should switch from "Log Out" to "Log In".
 
-/// TODO: replace this with your code
+const logInOut = document.querySelector(`#auth`) 
+
+logInOut.addEventListener(`click`, () {
+    if(logInOut.textContent === "Log In") {
+        logInOut.textContent = "Log Out"
+    } else {
+        logInOut.textContent = "Log In"
+    }
+})
 
 // Send an alert
 //
@@ -17,7 +25,17 @@
 // A user should be able to enter what they want the alert to say in the
 // text box. Then, they can submit the form to trigger the alert.
 
-/// TODO: replace this with your code
+const sendAlert = document.querySelector(`#send-alert`) 
+
+sendAlert.addEventListener(`submit`, (event) => {
+    event.preventDefault()
+    const alertMessage = document.sendAlert(`alertText`).value
+    if(alertMessage) {
+        alert(alertMessage)
+    } else{
+        alert(`Please enter a message`)
+    }
+})
 
 // Add an item
 //
@@ -34,7 +52,15 @@
 //     <li>Item</li>  <!-- This was added after double-clicking -->
 //   </ol>
 
-/// TODO: replace this with your code
+const itemAdder = document.querySelector(`#item-adder`)
+const list = document.itemAdder(`list`)
+
+itemAdder.addEventListener(`dblclick`, () => {
+    const newItem =document.createElement(`li`)
+    newItem.textContent = `Item`
+
+    list.appendChild(newItem)
+})
 
 // Change colors
 //
@@ -45,8 +71,22 @@
 // Clicking on "Turn Stuff Red" should make text red and clicking on "Turn
 // Stuff Blue" should make text blue.
 
-/// TODO: replace this with your code
+const changesColors = documents.querySelector(`.changes-colors`)
 
+const blueBtn = document.querySelector(`#blue`)
+    blueBtn.addEventListener(`click`, (event) => {
+    console.log(event.target)
+    changesColors(event.target.id)
+
+    })
+
+
+const redBtn = document.querySelector(`#red`)
+    blueBtn.addEventListener(`click`, (event) => {
+    console.log(event.target)
+    changesColors(event.target.id)
+
+    })
 // Calculate factorial
 //
 // The factorial of a number is the product of an integer and all the integers
@@ -62,7 +102,7 @@
 //   - calls your function that calculates a factorial
 //   - puts the result of the function inside the "result" span
 
-/// TODO: replace this with your code
+
 
 // Validate a form
 //
