@@ -90,6 +90,7 @@ function translateToPirateTalk(phrase) {
       return word
     }
   })
+  return translateWords.join(` `)
 }
 
 // Return the number of occurrences of each word in a string.
@@ -100,15 +101,18 @@ function translateToPirateTalk(phrase) {
 //   wordCount('hello world')
 //   => { hello: 1, world: 1 }
 function wordCount(str) {
-  const wordCounts = [] 
+  const words = str.split(` `)
+  const wordCounts = {}
+
 
   words.forEach(word => {
-    if (wordcounts[word]) {
+    if (wordCounts.hasOwnProperty(word)) {
       wordCounts[word]++
     } else {
       wordCounts[word] = 1
     }
   })
+  return wordCounts
 }
 
 // Given an object representing a bug, return true if the given bug is
@@ -137,9 +141,10 @@ function isBugAvailable(bug, month) {
   for(let i = 0; i < months.length; i++) {
     if(months[i] === month) {
       return true
+     }
     }
+    return false
   }
-}
 
 // Given an array of objects representing bugs, return an object that'll be
 // used to build a calendar. The keys of the object should be the months of the
@@ -191,11 +196,12 @@ function buildBugHuntCalendar(bugs) {
   bugs.forEach(bug => {
     const bugName = bug.name
     const availableMonths = bug.availability.months 
+    
+    availableMonths.forEach(month => {
+      calendar[month].push(bugName)
+    })
   })
 
-  availableMonths.forEach(month => {
-    calendar[month.push(bugName)]
-  })
 
  return calendar 
 }

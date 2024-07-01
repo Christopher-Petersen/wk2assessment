@@ -22,3 +22,7 @@ td{
     border-color: white;
     border-style: double;
 }
+
+.changes-colors {
+    color: black
+}

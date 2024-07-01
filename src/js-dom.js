@@ -10,11 +10,11 @@
 
 const logInOut = document.querySelector(`#auth`) 
 
-logInOut.addEventListener(`click`, () {
-    if(logInOut.textContent === "Log In") {
-        logInOut.textContent = "Log Out"
+logInOut.addEventListener(`click`, () => {
+    if(logInOut.textContent === "Log in") {
+        logInOut.textContent = "Log out"
     } else {
-        logInOut.textContent = "Log In"
+        logInOut.textContent = "Log in"
     }
 })
 
@@ -29,7 +29,8 @@ const sendAlert = document.querySelector(`#send-alert`)
 
 sendAlert.addEventListener(`submit`, (event) => {
     event.preventDefault()
-    const alertMessage = document.sendAlert(`alertText`).value
+    console.log(sendAlert)
+    const alertMessage = document.querySelector('#alert-message').value
     if(alertMessage) {
         alert(alertMessage)
     } else{
@@ -53,7 +54,7 @@ sendAlert.addEventListener(`submit`, (event) => {
 //   </ol>
 
 const itemAdder = document.querySelector(`#item-adder`)
-const list = document.itemAdder(`list`)
+// const list = document.itemAdder(`list`)
 
 itemAdder.addEventListener(`dblclick`, () => {
     const newItem =document.createElement(`li`)
@@ -71,22 +72,21 @@ itemAdder.addEventListener(`dblclick`, () => {
 // Clicking on "Turn Stuff Red" should make text red and clicking on "Turn
 // Stuff Blue" should make text blue.
 
-const changesColors = documents.querySelector(`.changes-colors`)
-
-const blueBtn = document.querySelector(`#blue`)
-    blueBtn.addEventListener(`click`, (event) => {
-    console.log(event.target)
-    changesColors(event.target.id)
-
+document.querySelector("#red").addEventListener(`click`, function() {
+    const elements = document.querySelectorAll(`.changes-colors`)
+    elements.forEach(element => {
+        element.style.color = `red`
     })
+})
 
-
-const redBtn = document.querySelector(`#red`)
-    blueBtn.addEventListener(`click`, (event) => {
-    console.log(event.target)
-    changesColors(event.target.id)
-
+document.querySelector("#blue").addEventListener(`click`, function() {
+    const elements = document.querySelectorAll(`.changes-colors`)
+    elements.forEach(element => {
+        element.style.color = `blue`
     })
+})
+
+
 // Calculate factorial
 //
 // The factorial of a number is the product of an integer and all the integers
@@ -101,6 +101,32 @@ const redBtn = document.querySelector(`#red`)
 //   - gets whatever number is inside the input field
 //   - calls your function that calculates a factorial
 //   - puts the result of the function inside the "result" span
+
+function calculateFactorial(number) {
+    if(number === 0 || number ===1) {
+        return 1
+    }
+    let factorial = 1
+    for(let i = number; i > 1; i --) {
+        factorial *= i 
+    }
+    return factorial 
+}
+
+document.querySelector('#factorial-calculator').addEventListener(`submit`, (event) => {
+    event.preventDefault()
+
+    const number = parseInt(document.querySelector(`#factorial-input`).value)
+
+    if (isNaN(number) || number < 0) {
+        document.querySelector('#result').textContent = 'Please enter a positive integer.';
+        return;
+    }
+
+    const result = calculateFactorial(number)
+
+    document.querySelector(`#result`).textContent = result 
+})
 
 
 
@@ -119,4 +145,18 @@ const redBtn = document.querySelector(`#red`)
 // the feedback text to say "The word must be at least 4 characters long." and
 // change the color of the text to red..
 
-/// TODO: replace this with your code
+document.querySelector("#recommend-word").addEventListener("submit", (event) => {
+
+    event.preventDefault()
+
+    let word = document.querySelector("#word").value
+    let feedback = document.querySelector(".form-feedback")
+
+    if(word.length >= 4) {
+        feedback.textContent = "Thanks for your submission!"
+        feedback.style.color = "green"
+    } else {
+        feedback.textContent = "The word must be at least 4 characters long."
+        feedback.style.color = "red"
+    }
+}); 

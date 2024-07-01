@@ -5,8 +5,7 @@
 // Ex.:
 //   giveMeTwo();
 //   => 2
-const giveMeTwo = () => 2
-
+const giveMeTwo = () => 2 
 
 // Set the value of addNums to an arrow function that takes in two numbers and
 // returns their sum.
@@ -20,9 +19,9 @@ const addNums = (num1, num2) => num1 + num2
 // returns the largest one.
 //
 // Ex.:
-//   max(1, 2);
+//   max(1, 2);7
 //   => 2
-const max = (num1, num2) => (num2 > num1 ? num1 : num2)
+const max = (num1, num2) => (num2 > num1 ? num2 : num1)
 
 // Given an array of numbers, return a new array that only includes the even
 // numbers. Do this using array iteration methods. Do NOT use a for loop.
